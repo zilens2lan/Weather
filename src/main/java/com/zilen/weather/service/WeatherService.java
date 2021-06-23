@@ -31,10 +31,10 @@ public class WeatherService {
             Weather weather = Weather.builder()
                     .id(jsonNode.get("id").asLong())
                     .cityName(jsonNode.get("name").asText())
-                    .temp(jsonNode.get("main").get("temp").asText())
-                    .humidity(jsonNode.get("main").get("humidity").asText())
-                    .pressure(jsonNode.get("main").get("pressure").asText())
-                    .windSpeed(jsonNode.get("wind").get("speed").asText())
+                    .temp(jsonNode.get("main").get("temp").asDouble())
+                    .humidity(jsonNode.get("main").get("humidity").asInt())
+                    .pressure(jsonNode.get("main").get("pressure").asInt())
+                    .windSpeed(jsonNode.get("wind").get("speed").asDouble())
                     .build();
             System.out.println("Weather in " + weather.getCityName() + ": \n" +
                     "Temperature -> " + weather.getTemp() + "\n" +

@@ -9,8 +9,8 @@ public class Weather {
 
     private long id;
     private String cityName;
-    private String temp;
-    private String pressure;
-    private String humidity;
-    private String windSpeed;
+    private double temp;
+    private int pressure;
+    private int humidity;
+    private double windSpeed;
 }
