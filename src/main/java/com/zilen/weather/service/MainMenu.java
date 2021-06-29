@@ -1,12 +1,17 @@
 package com.zilen.weather.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
 
 @Component
 public class MainMenu {
+
+    private final WeatherService weatherService;
+
+    public MainMenu(WeatherService weatherService) {
+        this.weatherService = weatherService;
+    }
 
     public void createMenu() {
         Scanner in = new Scanner(System.in);
@@ -17,8 +22,7 @@ public class MainMenu {
                 System.out.println("Enter the name of the city:");
                 Scanner city = new Scanner(System.in);
                 String cityName = city.nextLine();
-                WeatherService weatherRedirectService = new WeatherService(new ObjectMapper());
-                weatherRedirectService.findByCityName(cityName);
+                weatherService.findByCityName(cityName);
                 createMenu();
             case 2:
                 break;

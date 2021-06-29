@@ -12,6 +12,12 @@ public class WeatherConsoleApplication implements CommandLineRunner {
 
     private static final Logger LOG = LoggerFactory.getLogger(WeatherConsoleApplication.class);
 
+    private final MainMenu mainMenu;
+
+    public WeatherConsoleApplication(MainMenu mainMenu) {
+        this.mainMenu = mainMenu;
+    }
+
     public static void main(String[] args) {
         LOG.info("STARTING THE APPLICATION");
         SpringApplication.run(WeatherConsoleApplication.class, args).close();
@@ -21,7 +27,6 @@ public class WeatherConsoleApplication implements CommandLineRunner {
     @Override
     public void run(String... args){
         LOG.info("EXECUTING : command line runner");
-        MainMenu mainMenu = new MainMenu();
         mainMenu.createMenu();
     }
 }

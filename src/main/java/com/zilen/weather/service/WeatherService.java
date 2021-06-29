@@ -4,6 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.zilen.weather.entity.WeatherDTO;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -14,18 +17,21 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Service
+@PropertySource("classpath:application.properties")
 public class WeatherService {
 
     private final ObjectMapper objectMapper;
     private final String appid;
     private final String url;
+    private final RestTemplate restTemplate;
 
     private static final Logger logger = LogManager.getLogger(WeatherService.class);
 
-    public WeatherService(ObjectMapper objectMapper) {
-        this.appid = "50b4a9bfff0df818b269d4a468128442";
-        this.url = "https://api.openweathermap.org/data/2.5/weather?q=";
+    public WeatherService(ObjectMapper objectMapper, @Value("${appid}") String appid, @Value("${url}") String url, RestTemplate restTemplate) {
         this.objectMapper = objectMapper;
+        this.appid = appid;
+        this.url = url;
+        this.restTemplate = restTemplate;
     }
 
     public void findByCityName(String cityName) {
