@@ -1,19 +1,18 @@
 package com.zilen.weather.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MainFactorsDTO {
 
     private Float temp;
-    private Integer pressure;
     private Integer humidity;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+    private Integer pressure;
 
     public Float getTemp() {
         return temp;
@@ -39,33 +38,16 @@ public class MainFactorsDTO {
         this.humidity = humidity;
     }
 
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MainFactorsDTO that = (MainFactorsDTO) o;
+        return Objects.equals(temp, that.temp) && Objects.equals(humidity, that.humidity) && Objects.equals(pressure, that.pressure);
     }
 
     @Override
     public int hashCode() {
-        int result = 1;
-        result = ((result * 31) + ((this.humidity == null) ? 0 : this.humidity.hashCode()));
-        result = ((result * 31) + ((this.temp == null) ? 0 : this.temp.hashCode()));
-        result = ((result * 31) + ((this.pressure == null) ? 0 : this.pressure.hashCode()));
-        result = ((result * 31) + ((this.additionalProperties == null) ? 0 : this.additionalProperties.hashCode()));
-        return result;
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
-        if ((other instanceof MainFactorsDTO) == false) {
-            return false;
-        }
-        MainFactorsDTO rhs = ((MainFactorsDTO) other);
-        return (((((this.humidity == rhs.humidity) || ((this.humidity != null) && this.humidity.equals(rhs.humidity))) && ((this.temp == rhs.temp) || ((this.temp != null) && this.temp.equals(rhs.temp)))) && ((this.pressure == rhs.pressure) || ((this.pressure != null) && this.pressure.equals(rhs.pressure)))) && ((this.additionalProperties == rhs.additionalProperties) || ((this.additionalProperties != null) && this.additionalProperties.equals(rhs.additionalProperties))));
+        return Objects.hash(temp, humidity, pressure);
     }
 }

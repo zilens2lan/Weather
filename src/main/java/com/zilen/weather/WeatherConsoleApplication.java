@@ -1,6 +1,5 @@
 package com.zilen.weather;
 
-import com.zilen.weather.service.MainMenu;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -12,9 +11,9 @@ public class WeatherConsoleApplication implements CommandLineRunner {
 
     private static final Logger LOG = LoggerFactory.getLogger(WeatherConsoleApplication.class);
 
-    private final MainMenu mainMenu;
+    private final WeatherApplicationRunner mainMenu;
 
-    public WeatherConsoleApplication(MainMenu mainMenu) {
+    public WeatherConsoleApplication(WeatherApplicationRunner mainMenu) {
         this.mainMenu = mainMenu;
     }
 
