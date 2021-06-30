@@ -8,7 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -18,6 +18,10 @@ public class WeatherServiceTest {
 
     @Mock
     private RestTemplate restTemplate;
+    @Value("${com.zilen.url}")
+    private String url;
+    @Value("${com.zilen.appid}")
+    private String appid;
 
     @InjectMocks
     private WeatherService weatherService;
@@ -26,7 +30,7 @@ public class WeatherServiceTest {
     public void findByCityName() {
         WeatherDTO weather = new WeatherDTO();
         Mockito
-                .when(restTemplate.getForEntity("https://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=50b4a9bfff0df818b269d4a468128442", WeatherDTO.class))
+                .when(restTemplate.getForEntity(url + "Moscow&units=metric&appid=" + appid, WeatherDTO.class))
                 .thenReturn(new ResponseEntity(weather, HttpStatus.OK));
         WeatherDTO weatherDTO = weatherService.findByCityName("Moscow");
         Assert.assertEquals(weather, weatherDTO);
