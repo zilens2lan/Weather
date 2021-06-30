@@ -11,9 +11,9 @@ import org.springframework.web.client.RestTemplate;
 @PropertySource("classpath:application.properties")
 public class WeatherService {
 
-    private String appid;
-    private String url;
-    private RestTemplate restTemplate;
+    private final String appid;
+    private final String url;
+    private final RestTemplate restTemplate;
 
     public WeatherService(@Value("${com.zilen.appid}") String appid, @Value("${com.zilen.url}") String url, RestTemplate restTemplate) {
         this.appid = appid;
