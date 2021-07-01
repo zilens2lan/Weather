@@ -1,11 +1,13 @@
 package com.zilen.weather.service;
 
-import com.zilen.weather.entity.MainFactorsDTO;
-import com.zilen.weather.entity.WeatherDTO;
-import com.zilen.weather.entity.WindDTO;
+import com.zilen.weather.entity.WeatherDTO.MainFactorsDTO;
+import com.zilen.weather.entity.WeatherDTO.WeatherDTO;
+import com.zilen.weather.entity.WeatherDTO.WindDTO;
+import com.zilen.weather.repository.WeatherRepository;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -15,8 +17,10 @@ public class WeatherServiceTest {
     private RestTemplate restTemplate = Mockito.mock(RestTemplate.class);
     private String url = "url";
     private String appid = "appid";
+    @Autowired
+    private WeatherRepository weatherRepository;
 
-    private WeatherService weatherService = new WeatherService(appid, url, restTemplate);
+    private WeatherService weatherService = new WeatherService(appid, url, restTemplate, weatherRepository);
 
     @Test
     public void findByCityName() {
