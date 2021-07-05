@@ -1,5 +1,6 @@
 package com.zilen.weather.service;
 
+import com.zilen.weather.entity.DTOToWeatherConverter;
 import com.zilen.weather.entity.Weather;
 import com.zilen.weather.entity.WeatherDTO.WeatherDTO;
 import com.zilen.weather.repository.WeatherRepository;
@@ -8,6 +9,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @Service
 @PropertySource("classpath:application.properties")
@@ -26,16 +29,10 @@ public class WeatherService {
     }
 
     public WeatherDTO findByCityName(String cityName) {
+        assertTrue(cityName != null, "CityName is null!");
         ResponseEntity<WeatherDTO> response = restTemplate.getForEntity(url + cityName + "&units=metric&appid=" + appid, WeatherDTO.class);
-
-        Weather weather = new Weather();
-        weather.setId(response.getBody().getId());
-        weather.setName(response.getBody().getName());
-        weather.setTemp(response.getBody().getMainFactorsDTO().getTemp());
-        weather.setHumidity(response.getBody().getMainFactorsDTO().getHumidity());
-        weather.setPressure(response.getBody().getMainFactorsDTO().getPressure());
-        weather.setSpeed(response.getBody().getWindDTO().getSpeed());
-        weatherRepository.save(weather);
+        DTOToWeatherConverter weather = new DTOToWeatherConverter(response.getBody(), new Weather());
+        weatherRepository.save(weather.transform());
         return response.getBody();
     }
 }

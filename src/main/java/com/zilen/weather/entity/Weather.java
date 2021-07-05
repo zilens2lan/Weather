@@ -1,6 +1,5 @@
 package com.zilen.weather.entity;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -8,17 +7,11 @@ import javax.persistence.Id;
 public class Weather {
 
     @Id
-    @Column(name = "id")
     private Integer id;
-    @Column(name = "name")
     private String name;
-    @Column(name = "temp")
     private Float temp;
-    @Column(name = "humidity")
     private Integer humidity;
-    @Column(name = "pressure")
     private Integer pressure;
-    @Column(name = "speed")
     private Float speed;
 
     public Weather() {

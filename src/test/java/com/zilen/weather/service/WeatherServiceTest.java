@@ -6,8 +6,8 @@ import com.zilen.weather.entity.WeatherDTO.WindDTO;
 import com.zilen.weather.repository.WeatherRepository;
 import org.junit.Assert;
 import org.junit.Test;
-import org.mockito.Mockito
-import org.springframework.beans.factory.annotation.Autowired;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -17,7 +17,7 @@ public class WeatherServiceTest {
     private RestTemplate restTemplate = Mockito.mock(RestTemplate.class);
     private String url = "url";
     private String appid = "appid";
-    @Autowired
+    @Mock
     private WeatherRepository weatherRepository;
 
     private WeatherService weatherService = new WeatherService(appid, url, restTemplate, weatherRepository);
