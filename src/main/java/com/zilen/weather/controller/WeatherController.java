@@ -1,6 +1,6 @@
 package com.zilen.weather.controller;
 
-import com.zilen.weather.entity.WeatherDTO.WeatherDTO;
+import com.zilen.weather.DTO.Weather;
 import com.zilen.weather.service.WeatherService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +17,7 @@ public class WeatherController {
 
     @GetMapping("/{cityName}")
     @ResponseStatus(HttpStatus.OK)
-    public WeatherDTO findByCityName(@PathVariable String cityName) {
+    public Weather findByCityName(@PathVariable String cityName) {
         return weatherService.findByCityName(cityName);
     }
 }

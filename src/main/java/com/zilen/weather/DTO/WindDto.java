@@ -1,4 +1,4 @@
-package com.zilen.weather.entity.WeatherDTO;
+package com.zilen.weather.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WindDTO {
+public class WindDto {
 
     private Float speed;
 
@@ -23,7 +23,7 @@ public class WindDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WindDTO windDTO = (WindDTO) o;
+        WindDto windDTO = (WindDto) o;
         return Objects.equals(speed, windDTO.speed);
     }
 

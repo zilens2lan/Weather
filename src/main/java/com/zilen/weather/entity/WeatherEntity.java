@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Weather {
+public class WeatherEntity {
 
     @Id
     private Integer id;
@@ -14,10 +14,10 @@ public class Weather {
     private Integer pressure;
     private Float speed;
 
-    public Weather() {
+    public WeatherEntity() {
     }
 
-    public Weather(Integer id, String name, Float temp, Integer humidity, Integer pressure, Float speed) {
+    public WeatherEntity(Integer id, String name, Float temp, Integer humidity, Integer pressure, Float speed) {
         this.id = id;
         this.name = name;
         this.temp = temp;

@@ -1,4 +1,4 @@
-package com.zilen.weather.entity.WeatherDTO;
+package com.zilen.weather.DTO;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -8,14 +8,14 @@ import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WeatherDTO {
+public class Weather {
 
     private Integer id;
     private String name;
     @JsonProperty("main")
-    private MainFactorsDTO mainFactorsDTO;
+    private MainFactorsDto mainFactorsDTO;
     @JsonProperty("wind")
-    private WindDTO windDTO;
+    private WindDto windDTO;
 
     public Integer getId() {
         return id;
@@ -25,19 +25,19 @@ public class WeatherDTO {
         this.id = id;
     }
 
-    public MainFactorsDTO getMainFactorsDTO() {
+    public MainFactorsDto getMainFactorsDTO() {
         return mainFactorsDTO;
     }
 
-    public void setMainFactorsDTO(MainFactorsDTO mainFactorsDTO) {
+    public void setMainFactorsDTO(MainFactorsDto mainFactorsDTO) {
         this.mainFactorsDTO = mainFactorsDTO;
     }
 
-    public WindDTO getWindDTO() {
+    public WindDto getWindDTO() {
         return windDTO;
     }
 
-    public void setWindDTO(WindDTO windDTO) {
+    public void setWindDTO(WindDto windDTO) {
         this.windDTO = windDTO;
     }
 
@@ -53,7 +53,7 @@ public class WeatherDTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WeatherDTO that = (WeatherDTO) o;
+        Weather that = (Weather) o;
         return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(mainFactorsDTO, that.mainFactorsDTO) && Objects.equals(windDTO, that.windDTO);
     }
 
