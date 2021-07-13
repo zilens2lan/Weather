@@ -1,8 +1,8 @@
 package com.zilen.weather.service;
 
-import com.zilen.weather.DTO.MainFactorsDto;
-import com.zilen.weather.DTO.Weather;
-import com.zilen.weather.DTO.WindDto;
+import com.zilen.weather.dto.MainFactorsDto;
+import com.zilen.weather.dto.Weather;
+import com.zilen.weather.dto.WindDto;
 import com.zilen.weather.entity.WeatherEntity;
 import com.zilen.weather.repository.WeatherRepository;
 import org.junit.Assert;

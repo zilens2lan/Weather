@@ -1,4 +1,4 @@
-package com.zilen.weather.DTO;
+package com.zilen.weather.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;

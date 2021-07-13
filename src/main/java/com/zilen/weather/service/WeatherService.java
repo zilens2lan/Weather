@@ -1,6 +1,6 @@
 package com.zilen.weather.service;
 
-import com.zilen.weather.DTO.Weather;
+import com.zilen.weather.dto.Weather;
 import com.zilen.weather.exception.CityNotFoundException;
 import com.zilen.weather.repository.WeatherRepository;
 import org.springframework.beans.factory.annotation.Value;
@@ -30,12 +30,11 @@ public class WeatherService {
     }
 
     public Weather findByCityName(String cityName) {
-        if (Objects.nonNull(cityName)){
-            ResponseEntity<Weather> response = restTemplate.getForEntity(url + cityName + "&units=metric&appid=" + appid, Weather.class);
-            weatherRepository.save(weatherConverter.transformToEntity(response.getBody()));
-            return weatherConverter.transformToWeather(weatherRepository.findByName(cityName));
-        }else {
-            throw new CityNotFoundException();
+        if (!Objects.nonNull(cityName)) {
+            throw new CityNotFoundException("You must pass the correct cityName!", cityName);
         }
+        ResponseEntity<Weather> response = restTemplate.getForEntity(url + cityName + "&units=metric&appid=" + appid, Weather.class);
+        weatherRepository.save(weatherConverter.transformToEntity(response.getBody()));
+        return weatherConverter.transformToWeather(weatherRepository.findByName(cityName));
     }
 }
