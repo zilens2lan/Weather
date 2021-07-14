@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class WindDto {
+public class Wind {
 
     private Float speed;
 
@@ -23,7 +23,7 @@ public class WindDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        WindDto windDTO = (WindDto) o;
+        Wind windDTO = (Wind) o;
         return Objects.equals(speed, windDTO.speed);
     }
 

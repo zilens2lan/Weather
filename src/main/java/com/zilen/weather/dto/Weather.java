@@ -13,9 +13,8 @@ public class Weather {
     private Integer id;
     private String name;
     @JsonProperty("main")
-    private MainFactorsDto mainFactorsDTO;
-    @JsonProperty("wind")
-    private WindDto windDTO;
+    private MainFactors mainFactors;
+    private Wind wind;
 
     public Integer getId() {
         return id;
@@ -25,20 +24,20 @@ public class Weather {
         this.id = id;
     }
 
-    public MainFactorsDto getMainFactorsDTO() {
-        return mainFactorsDTO;
+    public MainFactors getMainFactors() {
+        return mainFactors;
     }
 
-    public void setMainFactorsDTO(MainFactorsDto mainFactorsDTO) {
-        this.mainFactorsDTO = mainFactorsDTO;
+    public void setMainFactors(MainFactors mainFactors) {
+        this.mainFactors = mainFactors;
     }
 
-    public WindDto getWindDTO() {
-        return windDTO;
+    public Wind getWind() {
+        return wind;
     }
 
-    public void setWindDTO(WindDto windDTO) {
-        this.windDTO = windDTO;
+    public void setWind(Wind wind) {
+        this.wind = wind;
     }
 
     public String getName() {
@@ -54,11 +53,11 @@ public class Weather {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Weather that = (Weather) o;
-        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(mainFactorsDTO, that.mainFactorsDTO) && Objects.equals(windDTO, that.windDTO);
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(mainFactors, that.mainFactors) && Objects.equals(wind, that.wind);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, mainFactorsDTO, windDTO);
+        return Objects.hash(id, name, mainFactors, wind);
     }
 }

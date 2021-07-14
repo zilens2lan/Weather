@@ -18,7 +18,7 @@ public class WeatherController {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("/city/{cityName}")
+    @GetMapping("/{cityName}")
     @ResponseStatus(HttpStatus.OK)
     public Weather findByCityName(@PathVariable String cityName) {
         return weatherService.findByCityName(cityName);

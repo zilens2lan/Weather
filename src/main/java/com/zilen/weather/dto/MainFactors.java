@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class MainFactorsDto {
+public class MainFactors {
 
     private Float temp;
     private Integer humidity;
@@ -41,7 +41,7 @@ public class MainFactorsDto {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MainFactorsDto that = (MainFactorsDto) o;
+        MainFactors that = (MainFactors) o;
         return Objects.equals(temp, that.temp) && Objects.equals(humidity, that.humidity) && Objects.equals(pressure, that.pressure);
     }
 
