@@ -5,7 +5,7 @@ import com.zilen.weather.dto.Weather;
 import com.zilen.weather.dto.Wind;
 import com.zilen.weather.entity.WeatherEntity;
 
-public abstract class WeatherAndWeatherEntityGetter {
+public abstract class BaseTest {
 
     public WeatherEntity getWeatherEntity(){
         WeatherEntity weatherEntity = new WeatherEntity();

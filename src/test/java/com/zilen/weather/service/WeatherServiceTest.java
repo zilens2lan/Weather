@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-public class WeatherServiceTest extends WeatherAndWeatherEntityGetter{
+public class WeatherServiceTest extends BaseTest {
 
     private final RestTemplate restTemplate = Mockito.mock(RestTemplate.class);
     private final String url = "url";

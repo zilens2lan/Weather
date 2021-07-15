@@ -2,6 +2,7 @@ package com.zilen.weather.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.util.Objects;
 
 @Entity
 public class WeatherEntity {
@@ -72,5 +73,18 @@ public class WeatherEntity {
 
     public void setSpeed(Float speed) {
         this.speed = speed;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WeatherEntity that = (WeatherEntity) o;
+        return Objects.equals(id, that.id) && Objects.equals(name, that.name) && Objects.equals(temp, that.temp) && Objects.equals(humidity, that.humidity) && Objects.equals(pressure, that.pressure) && Objects.equals(speed, that.speed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, temp, humidity, pressure, speed);
     }
 }
