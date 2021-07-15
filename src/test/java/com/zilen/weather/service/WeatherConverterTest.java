@@ -12,12 +12,12 @@ public class WeatherConverterTest extends BaseTest {
     private final WeatherEntity weatherEntity = getWeatherEntity();
 
     @Test
-    public void transformToWeather() {
+    public void shouldSuccessfullyConvertWeatherEntityToWeather() {
         Assert.assertEquals(weather, weatherConverter.transformToWeather(weatherEntity));
     }
 
     @Test
-    public void transformToEntity() {
+    public void shouldSuccessfullyConvertWeatherToWeatherEntity() {
         Assert.assertEquals(weatherConverter.transformToEntity(weather), weatherEntity);
     }
 }

@@ -24,7 +24,7 @@ public class WeatherServiceTest extends BaseTest {
     private final WeatherService weatherService = new WeatherService(restTemplate, weatherRepository, weatherConverter);
 
     @Test
-    public void findByCityName() {
+    public void shouldSuccessfullyRequestAndReturnWeather() {
         weatherService.setAppId(appId);
         weatherService.setUrl(url);
         Mockito
