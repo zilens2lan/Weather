@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Objects;
+
 @Service
 public class WeatherService {
 
@@ -25,13 +27,21 @@ public class WeatherService {
         this.weatherConverter = weatherConverter;
     }
 
+    public Weather findByCityNameFromApi(String cityName) {
+        ResponseEntity<Weather> response = restTemplate.getForEntity(url + cityName + "&units=metric&appid=" + appId, Weather.class);
+        weatherRepository.save(weatherConverter.transformToEntity(response.getBody()));
+        return weatherConverter.transformToWeather(weatherRepository.findByName(cityName));
+    }
+
     public Weather findByCityName(String cityName) {
         if (cityName.isBlank()) {
             throw new CityNotFoundException("You must pass the correct cityName!", cityName);
         }
-        ResponseEntity<Weather> response = restTemplate.getForEntity(url + cityName + "&units=metric&appid=" + appId, Weather.class);
-        weatherRepository.save(weatherConverter.transformToEntity(response.getBody()));
-        return weatherConverter.transformToWeather(weatherRepository.findByName(cityName));
+        if (Objects.isNull(weatherRepository.findByName(cityName))) {
+            return findByCityNameFromApi(cityName);
+        } else {
+            return weatherConverter.transformToWeather(weatherRepository.findByName(cityName));
+        }
     }
 
     public String getAppId() {
