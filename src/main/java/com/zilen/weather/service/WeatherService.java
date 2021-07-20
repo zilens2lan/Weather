@@ -30,7 +30,10 @@ public class WeatherService {
 
     public Weather findByCityNameFromApi(String cityName) {
         ResponseEntity<Weather> response = restTemplate.getForEntity(url + cityName + "&units=metric&appid=" + appId, Weather.class);
-        return weatherConverter.transformToWeather(weatherRepository.save(weatherConverter.transformToEntity(response.getBody())));
+        return weatherConverter
+                .transformToWeather(weatherRepository
+                                .save(weatherConverter
+                                .transformToEntity(response.getBody())));
     }
 
     public Weather findByCityName(String cityName) {
@@ -38,7 +41,7 @@ public class WeatherService {
             throw new CityNotFoundException("You must pass the correct cityName!", cityName);
         }
         WeatherEntity weatherEntity = weatherRepository.findByName(cityName);
-        if (!Objects.isNull(weatherEntity)) {
+        if (Objects.nonNull(weatherEntity)) {
             return weatherConverter.transformToWeather(weatherEntity);
         } else {
             return findByCityNameFromApi(cityName);

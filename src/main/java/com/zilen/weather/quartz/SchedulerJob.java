@@ -12,15 +12,16 @@ import java.util.List;
 public class SchedulerJob {
 
     private final WeatherService weatherService;
-    private final List<City> cities;
+    private final CityService cityService;
 
     public SchedulerJob(WeatherService weatherService, CityService cityService) {
         this.weatherService = weatherService;
-        this.cities = cityService.findAll();
+        this.cityService = cityService;
     }
 
     @Scheduled(fixedDelay = 60000)
     public void execute() {
+        List<City> cities = cityService.findAll();
         cities.forEach(city -> weatherService.findByCityNameFromApi(city.getName()));
     }
 }
