@@ -1,11 +1,11 @@
-package com.zilen.weather.service;
+package com.zilen.weather.service.weather;
 
 import com.zilen.weather.dto.MainFactors;
 import com.zilen.weather.dto.Weather;
 import com.zilen.weather.dto.Wind;
 import com.zilen.weather.entity.WeatherEntity;
 
-public abstract class BaseTest {
+public abstract class BaseWeatherTest {
 
     public WeatherEntity getWeatherEntity(){
         WeatherEntity weatherEntity = new WeatherEntity();

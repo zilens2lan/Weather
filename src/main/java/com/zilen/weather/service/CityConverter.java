@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 public class CityConverter {
 
     public City transformToCity(CityEntity cityEntity) {
-        return new City(cityEntity.getCity());
+        return new City(cityEntity.getName());
     }
 
     public CityEntity transformToEntity(City city) {
-        return new CityEntity(city.getCity());
+        return new CityEntity(city.getName());
     }
 }

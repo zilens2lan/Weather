@@ -1,8 +1,11 @@
-package com.zilen.weather.service;
+package com.zilen.weather.service.weather;
 
 import com.zilen.weather.dto.Weather;
 import com.zilen.weather.entity.WeatherEntity;
 import com.zilen.weather.repository.WeatherRepository;
+import com.zilen.weather.service.WeatherConverter;
+import com.zilen.weather.service.WeatherService;
+import com.zilen.weather.service.weather.BaseWeatherTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -10,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-public class WeatherServiceTest extends BaseTest {
+public class WeatherServiceTest extends BaseWeatherTest {
 
     private final RestTemplate restTemplate = Mockito.mock(RestTemplate.class);
     private final String url = "url";

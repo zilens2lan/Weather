@@ -21,6 +21,6 @@ public class SchedulerJob {
 
     @Scheduled(fixedDelay = 60000)
     public void execute() {
-        cities.forEach(city -> weatherService.findByCityNameFromApi(city.getCity()));
+        cities.forEach(city -> weatherService.findByCityNameFromApi(city.getName()));
     }
 }

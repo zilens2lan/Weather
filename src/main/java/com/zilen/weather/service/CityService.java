@@ -1,12 +1,11 @@
 package com.zilen.weather.service;
 
 import com.zilen.weather.dto.City;
-import com.zilen.weather.entity.CityEntity;
 import com.zilen.weather.repository.CityRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CityService {
@@ -20,12 +19,10 @@ public class CityService {
     }
 
     public List<City> findAll() {
-        List<CityEntity> cityEntities = cityRepository.findAll();
-        List<City> cities = new ArrayList<>();
-        for (CityEntity city : cityEntities){
-            cities.add(cityConverter.transformToCity(city));
-        }
-        return cities;
+        return cityRepository.findAll()
+                .stream()
+                .map(cityConverter::transformToCity)
+                .collect(Collectors.toList());
     }
 
     public void addCity(City city) {

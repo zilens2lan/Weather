@@ -8,21 +8,21 @@ import java.util.Objects;
 public class CityEntity {
 
     @Id
-    private String city;
+    private String name;
 
-    public CityEntity(String city) {
-        this.city = city;
+    public CityEntity(String name) {
+        this.name = name;
     }
 
     public CityEntity() {
     }
 
-    public String getCity() {
-        return city;
+    public String getName() {
+        return name;
     }
 
-    public void setCity(String city) {
-        this.city = this.city;
+    public void setName(String name) {
+        this.name = this.name;
     }
 
     @Override
@@ -30,18 +30,18 @@ public class CityEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CityEntity that = (CityEntity) o;
-        return Objects.equals(city, that.city);
+        return Objects.equals(name, that.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(city);
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
         return "CityEntity{" +
-                "city='" + city + '\'' +
+                "city='" + name + '\'' +
                 '}';
     }
 }
