@@ -5,11 +5,9 @@ import com.zilen.weather.entity.CityEntity;
 import com.zilen.weather.repository.CityRepository;
 import com.zilen.weather.service.CityConverter;
 import com.zilen.weather.service.CityService;
-import com.zilen.weather.service.city.BaseCityTest;
 import org.junit.Assert;
 import org.junit.Test;
 import org.mockito.Mockito;
-import org.springframework.http.HttpStatus;
 
 import java.util.List;
 
@@ -23,8 +21,8 @@ public class CityServiceTest extends BaseCityTest {
 
     @Test
     public void shouldSuccessfullyRequestAndReturnListCity() {
-        List<CityEntity> cityEntities = List.of(new CityEntity("Moscow"));
-        List<City> cities = List.of(new City("Moscow"));
+        List<CityEntity> cityEntities = List.of(getCityEntity());
+        List<City> cities = List.of(getCity());
 
         Mockito.when(cityRepository.findAll())
                 .thenReturn(cityEntities);
@@ -36,6 +34,7 @@ public class CityServiceTest extends BaseCityTest {
         Mockito.verify(cityRepository).findAll();
         Mockito.verify(cityConverter).transformToCity(cityEntity);
 
-        Assert.assertEquals(cities, citiesFromService);
+        Assert.assertEquals(cities.size(), citiesFromService.size());
+        Assert.assertEquals(cities.get(0), citiesFromService.get(0));
     }
 }

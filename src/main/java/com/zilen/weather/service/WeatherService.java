@@ -43,9 +43,8 @@ public class WeatherService {
         WeatherEntity weatherEntity = weatherRepository.findByName(cityName);
         if (Objects.nonNull(weatherEntity)) {
             return weatherConverter.transformToWeather(weatherEntity);
-        } else {
-            return findByCityNameFromApi(cityName);
         }
+        return findByCityNameFromApi(cityName);
     }
 
     public String getAppId() {
