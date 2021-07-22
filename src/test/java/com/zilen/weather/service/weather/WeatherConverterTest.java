@@ -1,11 +1,13 @@
-package com.zilen.weather.service;
+package com.zilen.weather.service.weather;
 
 import com.zilen.weather.dto.Weather;
 import com.zilen.weather.entity.WeatherEntity;
+import com.zilen.weather.service.WeatherConverter;
+import com.zilen.weather.service.weather.BaseWeatherTest;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class WeatherConverterTest extends BaseTest {
+public class WeatherConverterTest extends BaseWeatherTest {
 
     private final WeatherConverter weatherConverter = new WeatherConverter();
     private final Weather weather = getWeather();
